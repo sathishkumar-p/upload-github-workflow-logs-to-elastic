@@ -42,8 +42,15 @@ def main():
         output = "The input github org is not set"
         print(f"Error: {output}")
         sys.exit(-1)
+    github_host_api = os.environ.get("INPUT_GITHUB_HOST_API")
+    try:
+        assert github_host_api not in (None, '')
+    except:
+        output = "The input github host api is not set"
+        print(f"Error: {output}")
+        sys.exit(-1)        
     elastic_logger = logging.getLogger("elastic")
-    metadata_url = f"https://git.i.mercedes-benz.com/api/v3/repos/{github_org}/{github_repo}/actions/runs/{github_run_id}"
+    metadata_url = f"{github_host_api}/repos/{github_org}/{github_repo}/actions/runs/{github_run_id}"
     try:
         r = requests.get(metadata_url, stream=True, headers={
             "Authorization": f"token {github_token}"
@@ -94,7 +101,7 @@ def main():
 
     for job_id in jobs:
         try:
-            job_logs_url = f"https://git.i.mercedes-benz.com/api/v3/repos/{github_org}/{github_repo}/actions/jobs/{job_id}/logs"
+            job_logs_url = f"{github_host_api}/repos/{github_org}/{github_repo}/actions/jobs/{job_id}/logs"
             r = requests.get(job_logs_url, stream=True, headers={
                 "Authorization": f"token {github_token}"
             })

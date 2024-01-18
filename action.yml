@@ -8,6 +8,8 @@ inputs:
     description: "The github organization to read the workflows logs from"
   github_repository:
     description: "The github repository to read the workflows logs from"
+  github_host_api:
+    description: "Github HOST API url, For enterprise will be different"
   github_run_id:
     description: "The workflow specific run id to read the logs from"
   elastic_api_key_id:

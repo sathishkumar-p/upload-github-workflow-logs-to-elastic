@@ -4,8 +4,8 @@ import os
 import datetime
 import sys
 # third party
-import elasticsearch
-from elasticsearch.helpers import bulk
+from opensearchpy import OpenSearch
+from opensearchpy.helpers import bulk
 
 ELASTIC_HOST = os.environ.get("INPUT_ELASTIC_HOST")
 ELASTIC_API_KEY_ID = os.environ.get("INPUT_ELASTIC_API_KEY_ID")
@@ -43,9 +43,12 @@ except:
     sys.exit(-1)
 
 try:
-    es = elasticsearch.Elasticsearch(
+    es = OpenSearch(
         [ELASTIC_HOST],
-        api_key=(ELASTIC_API_KEY_ID, ELASTIC_API_KEY)
+        http_auth=(ELASTIC_API_KEY_ID, ELASTIC_API_KEY),
+        use_ssl=True,
+        verify_certs=False,
+        ssl_show_warn=False,
     )
 except elasticsearch.exceptions.AuthorizationException as exc:
     output = "Authentication to elastic failed"
