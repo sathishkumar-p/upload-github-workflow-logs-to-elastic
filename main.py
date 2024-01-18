@@ -43,7 +43,7 @@ def main():
         print(f"Error: {output}")
         sys.exit(-1)
     elastic_logger = logging.getLogger("elastic")
-    metadata_url = f"https://api.github.com/repos/{github_org}/{github_repo}/actions/runs/{github_run_id}"
+    metadata_url = f"https://git.i.mercedes-benz.com/api/v3/repos/{github_org}/{github_repo}/actions/runs/{github_run_id}"
     try:
         r = requests.get(metadata_url, stream=True, headers={
             "Authorization": f"token {github_token}"
