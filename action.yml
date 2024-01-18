@@ -1,6 +1,6 @@
-name: "Upload GitHub Action workflows logs to elastic"
-description: "Downloads the workflow logs and uploads to Elastic"
-author: "Shahar Glazner"
+name: "Upload GitHub Action workflows logs to opensearch"
+description: "Downloads the workflow logs and uploads to opensearch"
+author: "Sathishkumar-P"
 inputs:
   github_token:
     description: "GitHub PAT"
@@ -12,14 +12,14 @@ inputs:
     description: "Github HOST API url, For enterprise will be different"
   github_run_id:
     description: "The workflow specific run id to read the logs from"
-  elastic_api_key_id:
-    description: "Elastic api key id"
-  elastic_api_key:
-    description: "Elastic api key"
-  elastic_host:
-    description: "The elastic host"
-  elastic_index:
-    description: "The elastic index"
+  opensearch_username:
+    description: "opensearch api key id"
+  opensearch_password:
+    description: "opensearch api key"
+  opensearch_host:
+    description: "The opensearch host"
+  opensearch_index:
+    description: "The opensearch index"
 
 outputs:
   result:
