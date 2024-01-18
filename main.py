@@ -94,7 +94,7 @@ def main():
 
     for job_id in jobs:
         try:
-            job_logs_url = f"https://api.github.com/repos/{github_org}/{github_repo}/actions/jobs/{job_id}/logs"
+            job_logs_url = f"https://git.i.mercedes-benz.com/api/v3/repos/{github_org}/{github_repo}/actions/jobs/{job_id}/logs"
             r = requests.get(job_logs_url, stream=True, headers={
                 "Authorization": f"token {github_token}"
             })
