@@ -16,7 +16,7 @@ upload-logs-to-opensearch:
       - name: Upload GitHub Action workflow logs to Opensearch
         uses: sathishkumar-p/upload-github-workflow-logs-to-opensearch@v6
         with:
-       	  # Github PAT Token access to workflow logs
+          # Github PAT Token access to workflow logs
           github_token: "${{ secrets.PAT }}"
           # Github organization name 
           github_org: "ABC"
